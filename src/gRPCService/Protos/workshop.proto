@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package Workshop;
+
+service Worker {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc Add(stream AddRequest) returns (AddResponse) {}
+  rpc Random(RandomRequest) returns (stream RandomResponse) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message AddRequest {
+	int32 value = 1;
+}
+
+message AddResponse {
+	int32 value = 1;
+}
+
+message RandomRequest {
+	int32 minValue = 1;
+	int32 maxValue = 2;
+	int32 count = 3;
+}
+
+message RandomResponse {
+	int32 value = 1;
+}
